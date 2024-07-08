@@ -36,6 +36,10 @@ ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://your_domain.com',  # Add your domain
+    'http://3.138.153.98'      # Add your IP address
+]
 # Application definition
 
 INSTALLED_APPS = [
