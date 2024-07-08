@@ -31,7 +31,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
+
 ALLOWED_HOSTS = ["*"]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://yalefoodfinder.com/',  # Add your domain
+]
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
