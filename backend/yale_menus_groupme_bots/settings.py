@@ -88,11 +88,22 @@ WSGI_APPLICATION = 'yale_menus_groupme_bots.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#      'default': dj_database_url.config(
+#          default=os.environ.get('DATABASE_URL')
+#      )
+#  }
+
 DATABASES = {
-     'default': dj_database_url.config(
-         default=os.environ.get('DATABASE_URL')
-     )
- }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'yale_menus_db',
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',  # Default PostgreSQL port
+    }
+}
 
 
 # Password validation
