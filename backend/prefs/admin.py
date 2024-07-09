@@ -30,7 +30,7 @@ class PrefAdmin(admin.ModelAdmin):
         if response.status_code == 200 or response.status_code == 404:
             obj.delete()
         else:
-            raise ValidationError("Error deleting group chat")
+            raise ValidationError(f"Error deleting group chat: error {response.status_code}")
     
 
 # Register your models here.
