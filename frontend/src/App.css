@@ -10,6 +10,10 @@ body {
   align-items: center;
 }
 
+* {
+  border-radius: 9px;
+}
+
 .App {
   display: flex;
   flex-direction: column;

@@ -26,8 +26,13 @@ h2 {
 }
 
 .pref-link {
-  width: 200px;
-  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 100px;
+  min-width: 100px;
   color: #0056d7; 
   text-decoration: none; /* Remove underline */
   border: 2px solid #0056d7; /* Border for link */
