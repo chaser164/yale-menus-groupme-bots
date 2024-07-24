@@ -1,0 +1,29 @@
+/* Pref.css */
+.pref-card {
+  background-color: #000; /* Black background for consistency */
+  color: #00FF00; /* Bright green text */
+  border: 3px solid #00FF00; /* Green border to match the style */
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pref-text {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.pref-link {
+  color: #00FF00; /* Matching green color */
+  text-decoration: none; /* Remove underline */
+  border: 2px solid #00FF00; /* Border for link */
+  padding: 5px 10px;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.pref-link:hover {
+  background-color: #00CC00; /* Slightly darker green on hover */
+}

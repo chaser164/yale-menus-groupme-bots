@@ -1,0 +1,69 @@
+/* App.css */
+body {
+  font-family: 'Press Start 2P', cursive; /* Pixelated font for retro feel */
+  background-color: #000; /* Black background for contrast */
+  color: #00FF00; /* Bright green text for retro look */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.App {
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+  border: 3px solid #00FF00; /* Retro style border */
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.search-container,
+.add-preference-container {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 3px solid #00FF00; /* Matching border color */
+  background-color: #000; /* Same as background for consistent look */
+  color: #00FF00; /* Same as text color for consistency */
+  font-family: 'Press Start 2P', cursive; /* Ensure input text matches */
+}
+
+button {
+  background-color: #00FF00; /* Bright green button for standout */
+  color: #000; /* Black text for readability */
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', cursive; /* Matching font */
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #00CC00; /* Slightly darker green for hover effect */
+}
+
+.preferences-list {
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.preferences-list div {
+  background-color: #000; /* Same background for consistency */
+  color: #00FF00; /* Same text color for consistency */
+  border: 3px solid #00FF00; /* Matching border */
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', cursive; /* Ensure all text matches */
+}
