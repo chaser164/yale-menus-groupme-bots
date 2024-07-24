@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Pref from './Pref';
+import NewPreferencePopup from './NewPreferencePopup';
 import './App.css';
+import './Pref.css';
 
 const App = () => {
   const [preferences, setPreferences] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [newPreference, setNewPreference] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     fetchPreferences();
@@ -48,6 +51,7 @@ const App = () => {
       if (response.ok) {
         fetchPreferences(); // Refresh the list
         setNewPreference(''); // Clear the input field
+        setShowPopup(false); // Close the popup
       } else {
         console.error('Error adding new preference');
       }
@@ -67,11 +71,13 @@ const App = () => {
       <div className="search-container">
         <input
           type="text"
-          placeholder="Search preferences..."
+          placeholder="Search Groupchats"
           value={searchTerm}
           onChange={handleSearchChange}
         />
       </div>
+
+      <button onClick={() => setShowPopup(true)}>Request New Groupchat</button>
 
       <div className="preferences-list">
         {filteredPreferences.map((pref, index) => (
@@ -79,18 +85,14 @@ const App = () => {
         ))}
       </div>
 
-      <div className="add-preference-container">
-        <h2>Add a New Preference</h2>
-        <form onSubmit={handleNewPreferenceSubmit}>
-          <input
-            type="text"
-            placeholder="Enter new preference"
-            value={newPreference}
-            onChange={handleNewPreferenceChange}
-          />
-          <button type="submit">Add</button>
-        </form>
-      </div>
+      {showPopup && (
+        <NewPreferencePopup
+          newPreference={newPreference}
+          handleNewPreferenceChange={handleNewPreferenceChange}
+          handleNewPreferenceSubmit={handleNewPreferenceSubmit}
+          handleClose={() => setShowPopup(false)}
+        />
+      )}
     </div>
   );
 };

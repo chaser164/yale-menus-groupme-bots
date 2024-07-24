@@ -2,21 +2,21 @@
 body {
   font-family: 'Press Start 2P', cursive; /* Pixelated font for retro feel */
   background-color: #000; /* Black background for contrast */
-  color: #00FF00; /* Bright green text for retro look */
+  color: #a2a2a2;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  width: 80%;
   max-width: 600px;
-  border: 3px solid #00FF00; /* Retro style border */
-  padding: 20px;
+  margin-top: 20px; /* Align to top with some margin */
 }
 
 h1 {
@@ -26,6 +26,7 @@ h1 {
 
 .search-container,
 .add-preference-container {
+  width: 400px;
   margin-bottom: 20px;
 }
 
@@ -33,37 +34,34 @@ input[type="text"] {
   width: calc(100% - 22px);
   padding: 10px;
   margin: 10px 0;
-  border: 3px solid #00FF00; /* Matching border color */
+  border: 3px solid #a2a2a2; /* Matching border color */
   background-color: #000; /* Same as background for consistent look */
-  color: #00FF00; /* Same as text color for consistency */
-  font-family: 'Press Start 2P', cursive; /* Ensure input text matches */
+  color: #a2a2a2; /* Same as text color for consistency */
+  font-family: monospace; /* Ensure input text matches */
 }
 
 button {
-  background-color: #00FF00; /* Bright green button for standout */
+  background-color: #0056d7;
   color: #000; /* Black text for readability */
   border: none;
-  padding: 10px 20px;
+  padding: 14px 40px;
   font-family: 'Press Start 2P', cursive; /* Matching font */
   cursor: pointer;
   margin-top: 10px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+
 }
 
 button:hover {
-  background-color: #00CC00; /* Slightly darker green for hover effect */
+  background-color: #8daefc;
 }
 
 .preferences-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 20px 0;
   padding: 0;
   list-style-type: none;
-}
-
-.preferences-list div {
-  background-color: #000; /* Same background for consistency */
-  color: #00FF00; /* Same text color for consistency */
-  border: 3px solid #00FF00; /* Matching border */
-  padding: 10px;
-  margin-bottom: 10px;
-  font-family: 'Press Start 2P', cursive; /* Ensure all text matches */
 }

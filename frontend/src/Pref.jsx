@@ -1,4 +1,3 @@
-import React from 'react';
 import './Pref.css';
 
 const Pref = ({ pref_string, groupchat_url }) => {
