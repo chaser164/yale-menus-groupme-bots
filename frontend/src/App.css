@@ -12,6 +12,8 @@ body {
 
 .info {
   font-family: monospace;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 * {

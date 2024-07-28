@@ -29,7 +29,7 @@ const App = () => {
   };
 
   const handleNewPreferenceChange = (e) => {
-    setNewPreference(e.target.value);
+    setNewPreference(e.target.value.toLowerCase());
   };
 
   const handleNewPreferenceSubmit = async (e) => {
@@ -68,7 +68,8 @@ const App = () => {
     <div className="App">
       <h1>Yale Food Finder</h1>
       <p className='info'>
-        Join groupchats to get notified about where and when Yale Dining is serving their titular foods.
+        Join groupchats to get notified about when and where Yale dining is serving certain foods.
+        Request the creation of new groupchats with the button below.
       </p>
 
       <div className="search-container">
