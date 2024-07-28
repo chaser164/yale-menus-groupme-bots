@@ -67,6 +67,9 @@ const App = () => {
   return (
     <div className="App">
       <h1>Yale Food Finder</h1>
+      <p className='info'>
+        Join groupchats to get notified about where and when Yale Dining is serving their titular foods.
+      </p>
 
       <div className="search-container">
         <input
