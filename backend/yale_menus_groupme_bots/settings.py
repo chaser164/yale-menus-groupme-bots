@@ -34,10 +34,10 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True # dev
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://yalefoodfinder.com/',  # Add your domain
+    'https://yalefoodfinder.com',
 ]
 # Application definition
 
@@ -50,9 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'prefs',
+    'corsheaders', # for dev
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # for dev
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
