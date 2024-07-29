@@ -4,7 +4,8 @@ import re
 import time as t
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 from datetime import datetime
 import json
 import requests
@@ -32,11 +33,10 @@ class Command(BaseCommand):
 
     def scrape(self):
         print("initiating update...")
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-gpu")
-        driver = webdriver.Chrome(options=chrome_options)
+        firefox_options = webdriver.FirefoxOptions()
+        firefox_options.add_argument("--headless")
+        driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
+        print("gecko driver installed!")
 
 
         prefs = Pref.objects.all().values()
