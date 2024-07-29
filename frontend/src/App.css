@@ -75,3 +75,19 @@ button:hover {
   padding: 0;
   list-style-type: none;
 }
+
+.fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.fade-out.hidden {
+  opacity: 0;
+}
+
+.notification {
+  height: 10px;
+  color: white;
+  width: calc(100% - 30px);
+  overflow-wrap: break-word;
+}

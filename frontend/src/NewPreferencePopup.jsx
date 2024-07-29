@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './NewPreferencePopup.css';
 
 const NewPreferencePopup = ({ newPreference, handleNewPreferenceChange, handleNewPreferenceSubmit, handleClose }) => {
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateInput = () => {
     if (newPreference.trim() === '') {
@@ -17,12 +18,15 @@ const NewPreferencePopup = ({ newPreference, handleNewPreferenceChange, handleNe
     return true;
   };
 
-  const handleSubmit = (e) => {
-    setError('');
+  const handleSubmit = async (e) => {
+    console.log("here!!!")
     e.preventDefault();
+    setIsLoading(true);
+    setError('');
     if (validateInput()) {
-      handleNewPreferenceSubmit(e);
+      await handleNewPreferenceSubmit(e);
     }
+    setIsLoading(false);
   };
 
   const prefChange = (e) => {
@@ -35,11 +39,12 @@ const NewPreferencePopup = ({ newPreference, handleNewPreferenceChange, handleNe
     <div className="popup-overlay">
       <div className="popup">
         <h3>
-            Request a groupchat that finds 
+            Request a groupchat that sends alerts when
             {newPreference.length === 0 ? 
                 "..." : 
-                ` "${newPreference.length > 35 ? newPreference.slice(0, 35) + '...' : newPreference}"`
+                ` "${newPreference.length > 35 ? newPreference.slice(0, 35) + '...' : newPreference}" `
             }
+            is present in a Yale dining menu.
         </h3>
         <form onSubmit={handleSubmit}>
           <input
@@ -49,8 +54,8 @@ const NewPreferencePopup = ({ newPreference, handleNewPreferenceChange, handleNe
             onChange={prefChange}
           />
           <p className="error-message">{error}</p>
-          <button type="submit">Request</button>
-          <button type="button" onClick={handleClose}>Cancel</button>
+          <button type="submit" disabled={isLoading}>Request</button>
+          <button type="button" onClick={handleClose} disabled={isLoading}>Cancel</button>
         </form>
       </div>
     </div>

@@ -9,10 +9,37 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [newPreference, setNewPreference] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+  const [notification, setNotification] = useState('');
+  const [isVisible, setIsVisible] = useState(true);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
     fetchPreferences();
   }, []);
+
+  useEffect(() => {
+    if (!notification) {
+      return;
+    }
+
+    // allow for message visibility
+    setIsVisible(true);
+    setIsFading(false);
+
+    const timer1 = setTimeout(() => {
+      setIsVisible(false);
+      setIsFading(true);
+    }, 2000); // Wait 2 seconds before starting the fade-out
+
+    const timer2 = setTimeout(() => {
+      setNotification("");
+    }, 3000); // Wait 4 seconds before setting the message to an empty string
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, [notification]);
 
   const fetchPreferences = async () => {
     try {
@@ -36,9 +63,6 @@ const App = () => {
     e.preventDefault();
     if (newPreference.trim() === '') return;
 
-    const confirmationMessage = `Are you sure you want to request the creation of a food finder groupchat for "${newPreference}"?`;
-    if (!window.confirm(confirmationMessage)) return;
-
     try {
       const response = await fetch('https://yalefoodfinder.com/api/prefs/', {
         method: 'POST',
@@ -52,8 +76,10 @@ const App = () => {
         fetchPreferences(); // Refresh the list
         setNewPreference(''); // Clear the input field
         setShowPopup(false); // Close the popup
+        setNotification("Groupchat created!")
       } else {
-        console.error('Error adding new preference');
+        setNotification("Error generating groupchat.")
+        console.error('Error generating groupchat.');
       }
     } catch (error) {
       console.error('Error adding new preference:', error);
@@ -72,6 +98,8 @@ const App = () => {
         Request the creation of new groupchats with the button below.
       </p>
 
+      <button onClick={() => setShowPopup(true)}>Request New Groupchat</button>
+
       <div className="search-container">
         <input
           type="text"
@@ -81,7 +109,9 @@ const App = () => {
         />
       </div>
 
-      <button onClick={() => setShowPopup(true)}>Request New Groupchat</button>
+      <p className={`${isFading ? 'fade-out' : ''} notification ${!isVisible ? 'hidden' : ''}`}>
+        {notification}
+      </p>
 
       <div className="preferences-list">
         {filteredPreferences.map((pref, index) => (

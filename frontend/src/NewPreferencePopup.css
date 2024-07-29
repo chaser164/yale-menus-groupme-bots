@@ -45,7 +45,7 @@
     margin-left: 10px;
   }
   
-  .popup button:hover {
+  .popup button:hover:enabled {
     background-color: #8daefc;
   }
   
@@ -60,4 +60,9 @@
   h3 {
     width: calc(70vw - 5px);
     overflow-wrap: break-word;
+  }
+
+  .popup button:disabled {
+    cursor: default !important;
+    background-color: #425166 !important; 
   }
