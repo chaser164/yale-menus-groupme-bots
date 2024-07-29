@@ -26,7 +26,7 @@ def groupme_url(endpoint):
 class All_prefs(APIView):
 
     def get(self, request):
-        groupchat_urls = PrefSerializer(Pref.objects.all(), many=True).data
+        groupchat_urls = PrefSerializer(Pref.objects.order_by('pref_string'), many=True).data
         return Response(groupchat_urls)
     
     def post(self, request):
@@ -48,7 +48,7 @@ class All_prefs(APIView):
                 else:
                     return JsonResponse({'error': 'Failed to create groupchat'}, status=response.status_code)
                 # Create bot
-                response = requests.post(groupme_url('bots'), json={"bot":{"name": f"{pref_string.upper()} SLEUTH", "group_id": groupchat_id, "active":True}})
+                response = requests.post(groupme_url('bots'), json={"bot":{"name": f"{pref_string.upper()}", "group_id": groupchat_id, "active":True}})
                 if response.status_code == 201:
                     data = response.json()['response']['bot']
                     bot_id = data.get('bot_id')
