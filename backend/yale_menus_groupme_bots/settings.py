@@ -32,9 +32,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    'localhost',
+    '.yalefoodfinder.com',
+]
 
-CORS_ALLOW_ALL_ORIGINS = True # dev
+# CORS_ALLOW_ALL_ORIGINS = True # dev
 
 CSRF_TRUSTED_ORIGINS = [
     'https://yalefoodfinder.com',
@@ -50,11 +53,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'prefs',
-    'corsheaders', # for dev
+    # 'corsheaders', # for dev
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', # for dev
+    # 'corsheaders.middleware.CorsMiddleware', # for dev
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
