@@ -198,6 +198,7 @@ class Command(BaseCommand):
         message = self.build_message_string(bot_dict)
         # Don't send if there are no hits
         if message == 'NO_HITS':
+            print(f"no hits for {bot_dict['pref_string']}")
             return
         
         # Data payload
